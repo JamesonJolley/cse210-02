@@ -17,15 +17,18 @@ class Hilo:
     def __init__(self):
         self.player1 = player()
         ##cards[0] is the new card .cars[1] is the last card
-        self.cards =[random.randrange(1,13),random.randrange(1,13)] 
+        self.cards =lambda :[random.randrange(1,13),random.randrange(1,13)] 
 
 
     def loop(self):
+        
         def keep_playing():
-            pass
+            answer = input('do you want to keep playing? (y/n)')
+            if answer == 'n':
+                self.player1.playing = False
 
         def guess():
-                answer = input('will the next card be lower or higher or lower respond with (h/l)')
+                answer = input('will the next card be lower or higher or lower? respond with (h/l)')
                 if answer == 'h':
                     the_answer= True
                 else:
@@ -34,9 +37,9 @@ class Hilo:
 
         def guess_check(answer):
             if answer == False:
-                check = self.cards[0] > self.cards[1]
+                check = self.cards()[0] > self.cards()[1]
             else:
-                check = self.cards[0] < self.cards[1]
+                check = self.cards()[0] < self.cards()[1]
                 return check
 
         while self.player1.playing == True:
@@ -45,17 +48,18 @@ class Hilo:
                 break
             ##The current card is displayed.
             print(f'points:{self.player1.points}'  )
-            print(self.cards[0])
+            print(self.cards()[0])
             
             ##The player guesses if the next one will be higher or lower.
             answer = guess()
 
             ##The the next card is displayed.
-            print(self.cards[1])
+            print(self.cards()[1])
 
             ##The player earns 100 points if they guessed correctly.
             ##The player loses 75 points if they guessed incorrectly.
             self.player1.earns = guess_check(answer)
             self.player1.score()
+            keep_playing()
             
             
