@@ -17,13 +17,12 @@ class Hilo:
     def __init__(self):
         self.player1 = player()
         ##cards[0] is the new card .cars[1] is the last card
-        self.cards = [random.randrange(1,13),random.randrange(1,13)] 
+        self.cards =[random.randrange(1,13),random.randrange(1,13)] 
 
 
     def loop(self):
         def keep_playing():
             pass
-
 
         def guess():
                 answer = input('will the next card be lower or higher or lower respond with (h/l)')
