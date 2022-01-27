@@ -7,7 +7,7 @@ class player:
 
         #for the game loop
         self.playing = True
-        self.loses = lambda points : points == 0   
+        self.loses = lambda points : points <= 0   
 
         ## fore losing and ggaining points
         self.earns = False 

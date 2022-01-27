@@ -22,6 +22,7 @@ class Hilo:
 
     def loop(self):
         
+
         def keep_playing():
             answer = input('do you want to keep playing? (y/n)')
             if answer == 'n':
@@ -30,35 +31,40 @@ class Hilo:
         def guess():
                 answer = input('will the next card be lower or higher or lower? respond with (h/l)')
                 if answer == 'h':
-                    the_answer= True
+                    return True
                 else:
-                    the_answer = False
-                    return the_answer
+                    return False
 
-        def guess_check(answer):
+        def guess_check(answer,cards):
             if answer == False:
-                check = self.cards()[0] < self.cards()[1]
+                if cards[0] > cards[1]:
+                    return True
+                else:
+                    return False
             else:
-                check = self.cards()[0] > self.cards()[1]
-                return check
+                if cards[0] < cards[1]:
+                    return True
+                else:
+                    return False
 
         while self.player1.playing == True:
             if self.player1.loses(self.player1.points) == True:
                 print('you lost all your points, game over')
                 break
             ##The current card is displayed.
+            cards = self.cards()
             print(f'points:{self.player1.points}')
-            print(self.cards()[0])
+            print(cards[0])
             
             ##The player guesses if the next one will be higher or lower.
             answer = guess()
 
             ##The the next card is displayed.
-            print(self.cards()[1])
+            print(cards[1])
 
             ##The player earns 100 points if they guessed correctly.
             ##The player loses 75 points if they guessed incorrectly.
-            self.player1.earns = guess_check(answer)
+            self.player1.earns = guess_check(answer,cards)
             self.player1.score()
             keep_playing()
             
