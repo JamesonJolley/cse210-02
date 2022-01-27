@@ -37,9 +37,9 @@ class Hilo:
 
         def guess_check(answer):
             if answer == False:
-                check = self.cards()[0] > self.cards()[1]
-            else:
                 check = self.cards()[0] < self.cards()[1]
+            else:
+                check = self.cards()[0] > self.cards()[1]
                 return check
 
         while self.player1.playing == True:
@@ -47,7 +47,7 @@ class Hilo:
                 print('you lost all your points, game over')
                 break
             ##The current card is displayed.
-            print(f'points:{self.player1.points}'  )
+            print(f'points:{self.player1.points}')
             print(self.cards()[0])
             
             ##The player guesses if the next one will be higher or lower.
