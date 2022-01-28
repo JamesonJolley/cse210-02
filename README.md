@@ -32,7 +32,7 @@ root                    (project root folder)
 ## Authors
 
 * Nestor Rivera (riv21007@byui.edu)
-* Omarlin Parra (Omarlinp@byui.edu)
+* Jameson Jolley (jol21004@byui.edu)
 
 
 ## Define of classes:
