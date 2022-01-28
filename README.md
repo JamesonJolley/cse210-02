@@ -33,6 +33,7 @@ root                    (project root folder)
 
 * Nestor Rivera (riv21007@byui.edu)
 * Jameson Jolley (jol21004@byui.edu)
+* Omarlin Parra (omarlinp@byui.edu)
 
 
 ## Define of classes:
