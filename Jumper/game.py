@@ -1,8 +1,10 @@
 from player import player_1
+from word import word_gen
 
-class game:
+class start_game:
     def __init__(self):
         self.player = player_1()
+        self.word = word_gen()
         self.run()
 
     def reveal(self,guesses,word,word_printed = ''):
@@ -30,9 +32,9 @@ class game:
 
     def run(self):
         ##The puzzle is a secret word randomly chosen from a list.
-        word = 'word'
-        
-        while self.player.playing == True:
+        word = self.word.get_word()
+          
+        while self.player.playing:
                 ##If the guess is correct, the letter is revealed.
             self.reveal(self.player.guesses,word)
                 ##The player guesses a letter in the puzzle.
@@ -45,6 +47,6 @@ class game:
 
 
 
-game()    
+   
 
 
