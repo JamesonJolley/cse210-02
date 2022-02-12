@@ -1,10 +1,13 @@
 from player import player_1
 from word import word_gen
-
+from parachute import parachute
+import sys
 class start_game:
     def __init__(self):
         self.player = player_1()
         self.word = word_gen()
+        self.lives = -1
+        self.stage = parachute()
         self.run()
 
     def reveal(self,guesses,word,word_printed = ''):
@@ -17,7 +20,12 @@ class start_game:
     
     def compute_guess(self,guess,word):
         if str(guess) not in word:
-            print('cut') 
+            try:
+                self.lives += 1
+                self.stage.display_parachute(self.lives)
+            except KeyError:
+                print('the game is over. you lost')
+                sys.exit()
 
     def compute_win(self,word):
         counter = 0
@@ -28,8 +36,6 @@ class start_game:
             self.player.playing = False
             print('you win')
         ##add soot functionalty
-                
-
     def run(self):
         ##The puzzle is a secret word randomly chosen from a list.
         word = self.word.get_word()
