@@ -22,6 +22,9 @@ root                    (project root folder)
 +-- jumper                (source code for game)
   +-- game              (specific classes)
   +-- __main__.py       (program entry point)
+  +-- parachute.py      
+  +-- word.py           (word generator)
+  +-- player
 +-- README.md           (general info)
 ```
 
@@ -33,4 +36,7 @@ root                    (project root folder)
 
 
 ## Define classes and encapsulation:
-
+start_game : this class will start the game, compute the answers of the user, and determine wether he won or lost. 
+parachute : this class contains the different stages of the parachute with a method to display them. 
+player_1: this class will the check the gueses of the user and make sure is not something that he has given before and is a valid answer. 
+word_gen : this class represent the word generator. 
