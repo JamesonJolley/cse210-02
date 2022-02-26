@@ -1,4 +1,5 @@
-import pyray
+import pyray,sys
+from threading import Timer
 
 
 class VideoService:
@@ -22,6 +23,8 @@ class VideoService:
     def close_window(self):
         """Closes the window and releases all computing resources."""
         pyray.close_window()
+        
+
 
     def clear_buffer(self):
         """Clears the buffer in preparation for the next rendering. This method should be called at

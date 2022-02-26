@@ -2,7 +2,7 @@ import os
 import random
 
 from game.casting.actor import Actor
-from game.casting.artifact import Artifact
+from game.casting.gems_stone import gems,stone
 from game.casting.cast import Cast
 
 from game.directing.director import Director
@@ -56,34 +56,41 @@ def main():
     
     # create the artifacts
     def create_artifacts():
-        with open(DATA_PATH) as file:
-            data = file.read()
-            messages = data.splitlines()
+        
 
         for n in range(DEFAULT_ARTIFACTS):
-            text = chr(169)
-            message = messages[n]
+           
+            
 
             x = random.randint(1, COLS - 1)
             y = 1
             position = Point(x, y)
             position = position.scale(CELL_SIZE)
 
-            r = random.randint(0, 255)
-            g = random.randint(0, 255)
-            b = random.randint(0, 255)
-            color = Color(r, g, b)
             
-            artifact = Artifact()
-            artifact.set_text(text)
+            
+            artifact = gems()
+            
             artifact.set_font_size(FONT_SIZE)
-            artifact.set_color(color)
+            
             artifact.set_position(position)
-            artifact.set_message(message)
-            cast.add_actor("artifacts", artifact)
-            Timer(1,create_artifacts).start()
+            
+            cast.add_actor("diamond", artifact)
+            
+        Timer(1,create_artifacts).start()
 
-    
+    def create_stones():
+        for _ in range(DEFAULT_ARTIFACTS):
+            x =random.randint(1 , COLS -1)
+            y = 1
+            position = Point (x,y)
+
+            position.scale(CELL_SIZE)
+            stones = stone()
+            stones.set_font_size(FONT_SIZE)
+            stones.set_position(position)
+            cast.add_actor("stones",stones)
+
     # start the game
     create_artifacts()
     keyboard_service = KeyboardService(CELL_SIZE)

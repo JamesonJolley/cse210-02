@@ -50,7 +50,7 @@ class Director:
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
+        artifacts = cast.get_actors("diamond")
 
         banner.set_text("")
         max_x = self._video_service.get_width()
