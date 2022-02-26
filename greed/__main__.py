@@ -2,7 +2,7 @@ import os
 import random
 
 from game.casting.actor import Actor
-from game.casting.gems_stone import gems,stone
+from game.casting.artifact import Artifact
 from game.casting.cast import Cast
 
 from game.directing.director import Director
@@ -13,6 +13,8 @@ from game.services.video_service import VideoService
 from game.shared.color import Color
 from game.shared.point import Point
 from threading import Timer
+
+from game.casting.gems_stone import stone,gems
 
 
 
@@ -26,7 +28,8 @@ ROWS = 40
 CAPTION = "Robot Finds Kitten"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 1
+GEM_ARTIFACTS = 1
+STONE_ARTIFACTS = 2
 
 
 def main():
@@ -58,8 +61,25 @@ def main():
     def create_artifacts():
         
 
-        for n in range(DEFAULT_ARTIFACTS):
-           
+        for n in range(GEM_ARTIFACTS):
+            
+            
+
+            x = random.randint(1, COLS - 1)
+            y = 1
+            position = Point(x, y)
+            position = position.scale(CELL_SIZE)
+
+
+            
+            gem = gems()
+            gem.set_font_size(FONT_SIZE)
+            gem.set_position(position)
+            
+            cast.add_actor("gems", gem)
+
+        for n in range(STONE_ARTIFACTS):
+            
             
 
             x = random.randint(1, COLS - 1)
@@ -69,28 +89,15 @@ def main():
 
             
             
-            artifact = gems()
             
-            artifact.set_font_size(FONT_SIZE)
-            
-            artifact.set_position(position)
-            
-            cast.add_actor("diamond", artifact)
-            
-        Timer(1,create_artifacts).start()
-
-    def create_stones():
-        for _ in range(DEFAULT_ARTIFACTS):
-            x =random.randint(1 , COLS -1)
-            y = 1
-            position = Point (x,y)
-
-            position.scale(CELL_SIZE)
             stones = stone()
             stones.set_font_size(FONT_SIZE)
             stones.set_position(position)
-            cast.add_actor("stones",stones)
+            
+            cast.add_actor("stones", stones)
+        Timer(1,create_artifacts).start()
 
+    
     # start the game
     create_artifacts()
     keyboard_service = KeyboardService(CELL_SIZE)

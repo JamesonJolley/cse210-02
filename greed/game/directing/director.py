@@ -50,24 +50,33 @@ class Director:
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("diamond")
-
+        artifacts = cast.get_actors("stones")
+        gems = cast.get_actors("gems")
         banner.set_text("")
+        
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
-        robot.move_next(max_x, max_y)
-        artifact_velocity = Point(0,1)
-        artifact_velocity = artifact_velocity.scale(self._keyboard_service.get_cell_size())
-        for artifact in artifacts:
-            artifact.set_velocity(artifact_velocity)
-            artifact.move_next(max_x, max_y)
-
-
-
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
         
+        robot.move_next(max_x, max_y)
+        
+        artifact_velocity = Point(0,15)
+        gem_velocity = Point(0,10)
+        
+        for  gem in  gems:
+            gem.set_velocity(gem_velocity)
+            gem.move_next(max_x, max_y)
+        for stone in artifacts:
+            stone.set_velocity(artifact_velocity)
+                
+            stone.move_next(max_x, max_y)
+
+
+
+
+
+            if robot.get_position().equals(stone.get_position()):
+                pass
+                
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
