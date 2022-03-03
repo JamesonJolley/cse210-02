@@ -52,7 +52,7 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("stones")
         gems = cast.get_actors("gems")
-        banner.set_text("")
+        
         
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()

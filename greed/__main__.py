@@ -14,6 +14,7 @@ from game.shared.color import Color
 from game.shared.point import Point
 from threading import Timer
 
+from game.casting.score_board import board
 from game.casting.gems_stone import stone,gems
 
 
@@ -38,12 +39,12 @@ def main():
     cast = Cast()
     
     # create the banner
-    banner = Actor()
-    banner.set_text("")
+    banner = board()
+    banner.set_text(f"{banner.get_score()}")
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
-    cast.add_actor("banners", banner)
+    cast.add_actor("banners", board)
     
     # create the robot
     x = int(MAX_X / 2)
