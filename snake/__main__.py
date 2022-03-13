@@ -2,7 +2,7 @@ import constants
 
 from game.casting.cast import Cast
 from game.casting.food import Food
-from game.casting.score import Score
+from game.casting.score import Score , Score_2
 from game.casting.snake import Snake , snake_2
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction,ControlActorsAction_2
@@ -20,11 +20,12 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("foods", Food())
+    #cast.add_actor("foods", Food())
     cast.add_actor("snakes", Snake())
     #creaing the second snake :Omarlin
     cast.add_actor("snake2", snake_2())
     cast.add_actor("scores", Score())
+    cast.add_actor('scores2', Score_2())
    
     # start the game
     keyboard_service = KeyboardService()

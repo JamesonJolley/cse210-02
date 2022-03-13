@@ -83,7 +83,7 @@ class Snake(Actor):
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
     
-    def _prepare_body(self):
+    def _prepare_body(self): 
         x = int(150)
         y = int(constants.MAX_Y / 2)
 
@@ -92,13 +92,15 @@ class Snake(Actor):
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
             color = constants.YELLOW if i == 0 else constants.GREEN
-            
+
+
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text(text)
             segment.set_color(color)
             self._segments.append(segment)
+        
 
 """ this class is an example of inheritance an polymorphism, 
     here I am using the class above (inheritance)
@@ -108,7 +110,7 @@ class snake_2 (Snake):
 
 
     def _prepare_body(self):
-        x = int(850 / 2)
+        x = int(1500)
         y = int(constants.MAX_Y / 2)
 
         for i in range(constants.SNAKE_LENGTH):
