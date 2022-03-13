@@ -16,6 +16,8 @@ class Snake(Actor):
         super().__init__()
         self._segments = []
         self._prepare_body()
+       
+        
 
     def get_segments(self):
         return self._segments
@@ -40,7 +42,7 @@ class Snake(Actor):
         can_trail = True
         # logic to avoid duplicate segments in the same position 
         for segment in self._segments:
-            if head.get_position() == segment.get_position():
+            if head.get_position().equals(segment.get_position()):
                 if segment != head:
                     can_trail = False
                     break
@@ -84,22 +86,20 @@ class Snake(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self): 
-        x = int(150)
-        y = int(constants.MAX_Y / 2)
+        #he x and y variables have to be a multiple of the cell size or the collision detection will not work: Jameson
+        x = int(constants.CELL_SIZE)
+        y = int(constants.CELL_SIZE *30)
 
-        for i in range(constants.SNAKE_LENGTH):
-            position = Point(x - i * constants.CELL_SIZE, y)
-            velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+        
+        position = Point(x * constants.CELL_SIZE, y)
+        text = "@" 
+        color = constants.YELLOW 
 
-
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text(text)
-            segment.set_color(color)
-            self._segments.append(segment)
+        segment = Actor()
+        segment.set_position(position)
+        segment.set_text(text)
+        segment.set_color(color)
+        self._segments.append(segment)
         
 
 """ this class is an example of inheritance an polymorphism, 
@@ -110,21 +110,20 @@ class snake_2 (Snake):
 
 
     def _prepare_body(self):
-        x = int(1500)
-        y = int(constants.MAX_Y / 2)
+        #he x and y variables have to be a multiple of the cell size or the collision detection will not work: Jameson 
+        x = int(constants.CELL_SIZE )
+        y = int(constants.CELL_SIZE * 5)
+       
+        position = Point(x * constants.CELL_SIZE, y)
+        text = "@" 
+        color = constants.YELLOW 
 
-        for i in range(constants.SNAKE_LENGTH):
-            position = Point(x - i * constants.CELL_SIZE, y)
-            velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.RED
-            
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text(text)
-            segment.set_color(color)
-            self._segments.append(segment)
+        segment = Actor()
+        segment.set_position(position)
+        segment.set_text(text)
+        segment.set_color(color)
+        self._segments.append(segment)
+        
 
     # this makes the tral, we are makeing it red with polymorphism  : Jameson
     def leave_trail(self):
