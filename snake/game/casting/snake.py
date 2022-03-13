@@ -124,8 +124,11 @@ class snake_2 (Snake):
             segment.set_color(color)
             self._segments.append(segment)
 
-    # this makes the tral, we are makeing it red with  polymorphism  : Jameson
+    # this makes the tral, we are makeing it red with polymorphism  : Jameson
     def leave_trail(self):
+        '''
+        creates and apends a new segment at the position of the head
+        '''
         #makes a new segment
         segment = Actor()
         #sets the position
