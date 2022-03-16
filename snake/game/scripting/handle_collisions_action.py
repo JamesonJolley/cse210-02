@@ -32,14 +32,12 @@ class HandleCollisionsAction(Action):
             self._handle_game_over(cast)
         
         if self._player1_win:
-            snake1 = cast.get_first_actor("snakes")
-            self._handle_color_change(snake1)
+            snake2 = cast.get_first_actor("snake2")
+            self._handle_color_change(snake2) 
             
         if self._player2_win:
-            snake2 = cast.get_first_actor("snake2")
-            self._handle_color_change(snake2)
-
-
+            snake1 = cast.get_first_actor("snakes")
+            self._handle_color_change(snake1)
 
     def _handle_trail_collision(self, cast):
         """Sets the game over flag if the snake collides with the segments from the other snake.
@@ -99,7 +97,6 @@ class HandleCollisionsAction(Action):
 
             message.set_position(position)
             cast.add_actor("messages", message)
-
 
     def _handle_color_change(self,player,color = constants.WHITE):
         """handels the color change for the players
