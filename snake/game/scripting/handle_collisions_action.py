@@ -17,6 +17,8 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._player1_win = False
+        self._player2_win = False
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -29,6 +31,14 @@ class HandleCollisionsAction(Action):
             self._handle_trail_collision(cast)
             self._handle_game_over(cast)
         
+        if self._player1_win:
+            snake1 = cast.get_first_actor("snakes")
+            self._handle_color_change(snake1)
+            
+        if self._player2_win:
+            snake2 = cast.get_first_actor("snake2")
+            self._handle_color_change(snake2)
+
 
 
     def _handle_trail_collision(self, cast):
@@ -50,6 +60,7 @@ class HandleCollisionsAction(Action):
         for seg1 in segments1:
             if head2.get_position().equals(seg1.get_position()):
                 self._is_game_over = True
+                self._player2_win = True
                 score2.add_points(1)
                 break
 
@@ -57,6 +68,7 @@ class HandleCollisionsAction(Action):
         for seg2 in segments2:
             if head1.get_position().equals(seg2.get_position()):
                 self._is_game_over = True
+                self._player1_win = True
                 score1.add_points(1)
                 break
         
@@ -77,10 +89,27 @@ class HandleCollisionsAction(Action):
             position = Point(x, y)
 
             message = Actor()
-            message.set_text("Game Over!")
+
+            if self._player1_win:
+                message.set_text(f"Game Over! player 1 wins")
+            elif self._player2_win:
+                message.set_text(f"Game Over! player 2 wins")
+            else:
+                 message.set_text(f"?")
+
             message.set_position(position)
             cast.add_actor("messages", message)
 
-            for segment in segments:
-                segment.set_color(constants.WHITE)
+
+    def _handle_color_change(self,player,color = constants.WHITE):
+        """handels the color change for the players
+        
+        Args:
+            player (snake) : the players obj 
+            color : the color that the segment will turn
+        """
+        for segments in player.get_segments():
+            segments.set_color(color)
+
+
             
