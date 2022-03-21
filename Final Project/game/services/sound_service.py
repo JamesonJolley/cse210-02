@@ -38,7 +38,6 @@ class Sound_service:
         playes a sound in the sounds dict 
 
          Args:
-            sound (sound): the path of the sound file
             key (key): the key of the sound in the dict
         """
         playsound(self.sounds[key])
