@@ -1,16 +1,46 @@
-import winsound 
+from playsound import playsound
 
 class Sound_service:
     def __init__(self):
         self.sounds={}
 
-    def add_sound(self,sound,name):
+    def add_sound(self,key,sound):
         """
         adds a sound to the sounds dict 
 
          Args:
             sound (sound): the path of the sound file
-            name (name): the dict key the path will be under
+            key (key): the key of the sound in the dict
         """
-        self.sounds[name] = sound
+        self.sounds[key] = sound
 
+    def get_sound(self,key):
+        """
+        gets a sound to the sounds dict 
+
+         Args:
+           key (key): the key of the sound in the dict
+        """
+        return self.sounds[key]
+
+    def set_sound(self,key,sound):
+        """
+        updates a sound in the sounds dict 
+
+         Args:
+            sound (sound): the path of the sound file
+            key (key): the key of the sound in the dict
+        """
+        self.sounds[key] = sound
+
+    def play_sound(self,key):
+        """
+        playes a sound in the sounds dict 
+
+         Args:
+            sound (sound): the path of the sound file
+            key (key): the key of the sound in the dict
+        """
+        playsound(self.sounds[key])
+
+    

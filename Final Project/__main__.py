@@ -12,14 +12,19 @@ from game.services.keyboard_service import KeyboardService
 from game.services.video_service import VideoService
 from game.shared.color import Color
 from game.shared.point import Point
-
+from game.services.sound_service import Sound_service
 
 
 
 def main():
+    # just a test for now
+    sounds = Sound_service()
+    sounds.add_sound('open','game/Assets/mixkit-video-game-retro-click-237.wav')
+    sounds.play_sound('open')
     
     # create the cast
     cast = Cast()
+
     cast.add_actor("scores", Score())
     
     # start the game
@@ -36,6 +41,10 @@ def main():
     
     director = Director(video_service)
     director.start_game(cast, script)
+
+    
+
+
 
 
 if __name__ == "__main__":
