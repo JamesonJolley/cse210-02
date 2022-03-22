@@ -3,6 +3,7 @@ from playsound import playsound
 class Sound_service:
     def __init__(self):
         self.sounds={}
+        self.prepare_sounds() 
 
     def add_sound(self,key,sound):
         """
@@ -42,4 +43,8 @@ class Sound_service:
         """
         playsound(self.sounds[key])
 
-    
+    def prepare_sounds(self):
+        """
+        prepares the sounds dict 
+        """
+        self.add_sound('open','game/Assets/mixkit-video-game-retro-click-237.wav')

@@ -18,13 +18,12 @@ from game.services.sound_service import Sound_service
 
 def main():
     # just a test for now
-    sounds = Sound_service()
-    sounds.add_sound('open','game/Assets/mixkit-video-game-retro-click-237.wav')
-    sounds.play_sound('open')
     
+    
+
     # create the cast
     cast = Cast()
-
+    cast.sounds.play_sound('open')
     cast.add_actor("scores", Score())
     
     # start the game

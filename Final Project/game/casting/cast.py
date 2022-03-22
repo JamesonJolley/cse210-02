@@ -1,3 +1,4 @@
+from game.services.sound_service import Sound_service
 class Cast:
     """A collection of actors.
 
@@ -11,6 +12,8 @@ class Cast:
     def __init__(self):
         """Constructs a new Actor."""
         self._actors = {}
+        # i am puting the intance of Sound_service hear so that all the methods that have cast as a argument have acsess to sounds: jameson
+        self.sounds = Sound_service()
         
     def add_actor(self, group, actor):
         """Adds an actor to the given group.
