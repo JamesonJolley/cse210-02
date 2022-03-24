@@ -8,9 +8,6 @@ class Sound_service:
         self.prepare_sounds() 
         self.time_started=0
         
-        
-        
-
     def add_sound(self,key,sound,Sound_duration=0):
         """
         adds a sound to the sounds dict 
@@ -56,19 +53,21 @@ class Sound_service:
         prepares the sounds dict 
         """
         self.add_sound('open','game/Assets/mixkit-video-game-retro-click-237.wav')
-        self.add_sound('song', 'game/Assets/Tetris.mp3',-8.300000)
+        self.add_sound('song', 'game/Assets/Tetris.mp3',-1.301739848)
 
     def play_continuous(self,key='song'):
         sound = self.get_sound(key)
         time_dif = self.time_started - time.process_time()
-
-        if self.time_started == 0:
-            self.time_started == time.process_time()
+        print(time_dif)
+        print(sound[1])
+        if time_dif == 0:
+            self.time_started=time.process_time()
             playsound(sound[0])
-        elif time_dif <= sound[1]:
-            self.time_started = 0
+        if time_dif <= sound[1]:
+            self.time_started=time.process_time()
+            playsound(sound[0])
         else:
             pass
 
-        print(time_dif)
+        
         
