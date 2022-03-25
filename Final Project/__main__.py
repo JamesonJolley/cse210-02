@@ -23,7 +23,7 @@ def main():
 
     # create the cast
     cast = Cast()
-    cast.sounds.play_sound('open')
+    
     cast.add_actor("scores", Score())
     
     # start the game
@@ -37,7 +37,8 @@ def main():
     
     script.add_action("update", MoveActorsAction())
     script.add_action("output", DrawActorsAction(video_service))
-    
+
+    cast.sounds.play_sound('open')
     director = Director(video_service)
     director.start_game(cast, script)
 
