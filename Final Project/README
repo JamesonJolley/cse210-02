@@ -1,1 +1,11 @@
+hello, welcome to our Tetris term project. this is a recreation of Tetris using the Pygame module. 
+
+Dependencies: 
+In order to run this project, you will need the Tkinter module and the Pygame module 
+TK install: http://tkdocs.com/tutorial/install.html 
+Pygame install: https://www.pygame.org/wiki/GettingStarted 
+
+
+
+
 
