@@ -21,4 +21,16 @@ class Figure:
     def image(self):
         return self.figures[self.type][self.rotation]
     def rotate(self):
+        
         self.rotation = (self.rotation + 1) % len(self.figures[self.type])
+
+    def get_x(self):
+        return self.x
+    def get_y(self):
+        return self.y
+    def get_type(self):
+        return self.type
+    def get_color(self):
+        return self.color
+    def get_rotation(self):
+        return self.rotation
