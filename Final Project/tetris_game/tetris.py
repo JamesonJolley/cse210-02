@@ -1,7 +1,3 @@
-from gc import freeze
-import imp
-from operator import truediv
-from turtle import width
 from figures import Figure
 
 class tetris:
@@ -32,17 +28,17 @@ class tetris:
         for i in range  (4):
             for j in range (4):
                 if i * 4 + j in self.figure.image():
-                    if i +self.figure.y > self.height - 1 or \
-                        j + self.figure.x > self.width - 1 or \
-                        j + self.figure.x < 0 or \
-                        self.field [i + self.figure.y][j + self.figure.x]>0:
+                    if i +self.figure.get_y() > self.height - 1 or \
+                        j + self.figure.get_x() > self.width - 1 or \
+                        j + self.figure.get_x() < 0 or \
+                        self.field [i + self.figure.get_y()][j + self.figure.get_x()]>0:
                             intersection = True
         return intersection
     def freeze(self):
         for i in range(4):
             for j in range(4):
                 if i * 4 + j in self.figure.image():
-                    self.field[i + self.figure.y][j+ self.figure.x]= self.figure.color
+                    self.field[i + self.figure.get_y()][j+ self.figure.get_x()]= self.figure.get_color()
         self.break_lines()
         self.new_figure()
         if self.intersects():
@@ -64,22 +60,24 @@ class tetris:
                     
     def go_space(self):
         while not self.intersects():
-            self.figure.y += 1
-        self.figure.y -= 1 
+            self.figure.add_y(1)
+        self.figure.subtract_y(1) 
         self.freeze()
     
     def go_down(self):
-        self.figure.y += 1
+        self.figure.add_y(1)
         if self.intersects():
-            self.figure.y -=1
+            self.figure.subtract_y(1)
             self.freeze()
     def go_side(self , dx):
-        old_x = self.figure.x
-        self.figure.x += dx
+        old_x = self.figure.get_x()
+        self.figure.add_x(dx)
+        
         if self.intersects():
-            self.figure.x = old_x
+            self.figure.set_x(old_x)
+
     def rotate (self):
-        old_rotation = self.figure.rotation
+        old_rotation = self.figure.get_rotation()
         self.figure.rotate()
         if self.intersects():
-            self.figure.rotation = old_rotation
+            self.figure.set_rotation(old_rotation)

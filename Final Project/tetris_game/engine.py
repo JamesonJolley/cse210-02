@@ -69,8 +69,8 @@ while not done:
                 if p in game.figure.image():
                     pygame.draw.rect(screen, colors[game.figure.color],
                         [
-                            game.x + game.zoom * (j + game.figure.x) + 1,
-                            game.y + game.zoom * (i + game.figure.y) + 1,
+                            game.x + game.zoom * (j + game.figure.get_x()) + 1,
+                            game.y + game.zoom * (i + game.figure.get_y()) + 1,
                             game.zoom - 2 , game.zoom - 2
                         ]
                     )
