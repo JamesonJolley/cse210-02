@@ -1,11 +1,32 @@
-hello, welcome to our Tetris term project. this is a recreation of Tetris using the Pygame module. 
+hello, welcome to our Tetris term project. this is a recreation of Tetris using the Pygame module.
+
+game description: 
+Tetris had simple rules you are given random shapes each sale will appear on the top 
+of the screen and slowly fall to the bottom of the screen. when a row is full it is removed. 
+if the shapes reach the top the game is over.
 
 Dependencies: 
 In order to run this project, you will need the Tkinter module and the Pygame module 
 TK install: http://tkdocs.com/tutorial/install.html 
 Pygame install: https://www.pygame.org/wiki/GettingStarted 
 
+runing the game:
+the starting point of the game is the engine.py file, runing that file will star the game.
 
+contibuters:
+
+Omarlin Parra (omarlinp@byui.edu)
+Jameson Jolley (jol21004@byui.edu)
+
+The project files and folders are organized as follows:
+
+root
++--tetris_game
+    +--colors.py 
+    +--engine.py (entry point)
+    +--figures.py
+    +--tertris.py
++--README
 
 
 
