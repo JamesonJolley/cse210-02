@@ -1,28 +1,32 @@
 import pygame
 from colors import colors
 from tetris import tetris
+from Assets import constants
 pygame.init()
 
+
+#background colors
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 GRAY  = (128,128,128)
-
+#size of the window
 SIZE = (400,500)
 
+#creating the display
 screen = pygame.display.set_mode (SIZE)
 
+#setting up the title of the game
 pygame.display.set_caption("Tetris")
 
-done = False
 clock = pygame.time.Clock()
-fps = 25
 
 game = tetris(20,10)
 
 counter = 0
 
 pressing_down = False
-
+#variable for the loop
+done = False
 while not done:
     if game.figure is None:
         game.new_figure()
@@ -30,7 +34,7 @@ while not done:
     if counter > 100000:
         counter = 0
     
-    if counter % (fps // game.level // 2) == 0 or pressing_down:
+    if counter % (constants.FPS // game.level // 2) == 0 or pressing_down:
         if game.state == "start":
             game.go_down()
     for event in pygame.event.get():
@@ -87,6 +91,6 @@ while not done:
         screen.blit(text_game_over1, [25, 265])
     
     pygame.display.flip()
-    clock.tick(fps)
+    clock.tick(constants.FPS)
 
 pygame.quit()

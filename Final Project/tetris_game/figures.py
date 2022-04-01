@@ -23,8 +23,8 @@ class Figure:
             y(int):  the y coordinates
         
         """
-        self.x = x
-        self.y = y
+        self._x = x
+        self._y = y
         self.type = random.randint(0, len(self.figures) - 1)
         self.color = random.randint(1,len(colors) -1)
         self.rotation = 0
@@ -45,14 +45,14 @@ class Figure:
             Returns: 
                 int: the x coordinates
         """
-        return self.x
+        return self._x
     def get_y(self):
         """Gets the x coordinates
 
             Returns: 
                 int: the x coordinates
         """
-        return self.y
+        return self._y
     
     def get_type(self):
         """Gets the type of figure
@@ -86,7 +86,7 @@ class Figure:
             Args:
                 x (int): the x coordinates of the figure
         """
-        self.x = x
+        self._x = x
     
     def add_x (self,x):
         """Adds to the x corrdintates of the figure
@@ -94,7 +94,7 @@ class Figure:
             Args: 
                 x (int): the coordinates of the figure
         """
-        self.x += x
+        self._x += x
     
 
     def set_y(self,y):
@@ -103,7 +103,7 @@ class Figure:
             Args:
                 y (int): the y coordiantes of the figure
         """
-        self.y = y
+        self._y = y
     
     def add_y(self,y):
         """Adds to the y coordinates
@@ -111,7 +111,7 @@ class Figure:
             Args:
                 y (int): the y coordiantes of the figure
         """
-        self.y += y
+        self._y += y
     
     def subtract_y(self,y):
         """ Subtracts from the y coordinates
@@ -120,7 +120,7 @@ class Figure:
                     y (int): the y coordiantes of the figure
         
         """
-        self.y -= y
+        self._y -= y
 
 
     def set_rotation(self,rotation):
