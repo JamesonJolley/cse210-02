@@ -39,27 +39,84 @@ class tetris:
                 (int): Returns the width of the object
         """
         return self.width
+    
     def get_field(self,x,y):
+        """Returns the field of the object
+
+            Args:
+            x (int): the x value of the object
+            y (int): the y value of the object
+
+            Returns:
+                (list): Returns the field of the object
+        """
         return self.field[x][y]
+    
     def get_score(self):
+        """Returns the score of the object
+
+            Returns:
+                (int): Returns the score of the object
+        """
         return self.score
+    
     def get_state(self):
+        """Returns the state of the object
+
+            Returns:
+                (str): Returns the state of the object
+        """
         return self.state
+    
     def get_level(self):
+        """Returns the level of the object
+
+            Returns:
+                (int): Returns the level of the object
+        """
         return self.level
+    
     def get_zoom(self):
+        """Returns the zoom of the object
+
+            Returns:
+                (int): Returns the zoom of the object
+        """
         return self.zoom
+    
     def get_x(self):
+        """Returns the x coordinates of the object
+
+            Returns:
+                (int): Returns the x coordinates of the object
+        """
         return self.x
+    
     def get_y(self):
+        """Returns the y coordinates of the object
+
+            Returns:
+                (int): Returns the y coordinates of the object
+        """
         return self.y
+    
     def get_figure(self):
+        """Returns the figure
+
+            Returns:
+                (obj): returns and object with the current figure. 
+        """
         return self.figure
 
 
 
 #---------------------Setters
     def set_state(self,state):
+        """Sets a new state
+
+            Args:
+            state (str): the state of the game. 
+        """
         self.state = state
 
 
