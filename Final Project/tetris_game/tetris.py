@@ -1,26 +1,71 @@
 from figures import Figure
-
+from pygame import mixer
 class tetris:
-    level = 2
-    score = 0
-    state = 'start'
-    field = []
-    height = 0
-    width = 0
-    x = 100
-    y = 60
-    zoom = 20
-    figure = None
+
 
     def __init__(self, height, width):
         self.height = height
         self.width = width
+        self.field = []
+        self.score = 0
+        self.state = "start"
+        self.level = 2
+        self.zoom = 20
+        self.x = 100
+        self.y = 60
+        self.figure = None
+
+
 
         for i in range (height):
             new_line = []
             for j in range (width):
                 new_line.append(0)
             self.field.append(new_line)
+
+    #---------------------Getters
+    def get_height(self):
+        """Returns the height of the object
+
+            Returns:
+                (int): Returns the height of the object
+        """
+        return self.height
+
+    def get_width(self):
+        """Returns the width of the object
+
+            Returns:
+                (int): Returns the width of the object
+        """
+        return self.width
+    def get_field(self,x,y):
+        return self.field[x][y]
+    def get_score(self):
+        return self.score
+    def get_state(self):
+        return self.state
+    def get_level(self):
+        return self.level
+    def get_zoom(self):
+        return self.zoom
+    def get_x(self):
+        return self.x
+    def get_y(self):
+        return self.y
+    def get_figure(self):
+        return self.figure
+
+
+
+#---------------------Setters
+    def set_state(self,state):
+        self.state = state
+
+
+
+
+
     def new_figure(self):
         self.figure = Figure(3,0)
     def intersects(self):
@@ -46,6 +91,7 @@ class tetris:
 
     def break_lines(self):
             lines = 0
+            
             for i in range (1,self.height):
                 zeros = 0
                 for j in range (self.width):
@@ -53,6 +99,8 @@ class tetris:
                         zeros +=1
                 if zeros ==0:
                     lines += 1
+                    break_sound = mixer.Sound('Assets/line_break.wav')
+                    break_sound.play()
                     for i1 in range(i, 1,-1):
                         for j in range(self.width):
                             self.field[i1][j] = self.field[i1-1][j]
