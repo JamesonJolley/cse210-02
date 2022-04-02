@@ -64,14 +64,16 @@ while not done:
             pressing_down = False
     #screen background
     screen.fill(constants.WHITE)
-
+    
+    
+    #creating the grid
     for i in range(game.height):
         for j in range (game.width):
             pygame.draw.rect(screen, constants.GRAY, [game.get_x() + game.get_zoom() * j , game.get_y() + game.get_zoom() * i, game.get_zoom(), game.get_zoom(),],1)
             if game.get_field(i,j) > 0:
                 pygame.draw.rect(screen,colors[game.get_field(i,j) ],
                 [game.x + game.get_zoom() * j + 1, game.get_y() + game.get_zoom() *i +1, game.get_zoom() -2, game.get_zoom() - 1])
-    
+    #drawing the upcoming figure
     if game.figure is not None:
         for i in range(4):
             for j in range(4):
@@ -84,10 +86,12 @@ while not done:
                             game.get_zoom() - 2 , game.get_zoom() - 2
                         ]
                     )
+    #fonts for the game over part
     font  =  pygame.font.SysFont('Calibri', 25, True, False)
     font1 =  pygame.font.SysFont('Calibri',65,True,False)
+    #drawing the score
     text = font.render('Score: ' + str(game.get_score()),True,constants.BLACK)
-
+    #drwaing the game over aspect of the game. 
     text_game_over = font1.render("Game Over", True, (255, 125, 0))
     text_game_over1 = font1.render("Press ESC", True, (255, 215, 0))
 

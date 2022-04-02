@@ -124,8 +124,10 @@ class tetris:
 
 
     def new_figure(self):
+        """Creates a new figure"""
         self.figure = Figure(3,0)
     def intersects(self):
+        """Determines if the player has crossed the top line and if the figures collide with each other"""
         intersection = False
         for i in range  (4):
             for j in range (4):
@@ -137,6 +139,7 @@ class tetris:
                             intersection = True
         return intersection
     def freeze(self):
+        """Freezes the current figure."""
         for i in range(4):
             for j in range(4):
                 if i * 4 + j in self.figure.image():
@@ -147,6 +150,7 @@ class tetris:
             self.state = "gameover"
 
     def break_lines(self):
+            """Determines if there are lines to break"""
             lines = 0
             
             for i in range (1,self.height):
@@ -156,25 +160,31 @@ class tetris:
                         zeros +=1
                 if zeros ==0:
                     lines += 1
+                    
+                    #music effect
                     break_sound = mixer.Sound('Assets/line_break.wav')
                     break_sound.play()
+                    
                     for i1 in range(i, 1,-1):
                         for j in range(self.width):
                             self.field[i1][j] = self.field[i1-1][j]
             self.score += lines ** 2
                     
     def go_space(self):
+        """this will bring the falling figure down to the bottom"""
         while not self.intersects():
             self.figure.add_y(1)
         self.figure.subtract_y(1) 
         self.freeze()
     
     def go_down(self):
+        """speed up the figure to come down faster"""
         self.figure.add_y(1)
         if self.intersects():
             self.figure.subtract_y(1)
             self.freeze()
     def go_side(self , dx):
+        """change the direction of the figure"""
         old_x = self.figure.get_x()
         self.figure.add_x(dx)
         
@@ -182,6 +192,7 @@ class tetris:
             self.figure.set_x(old_x)
 
     def rotate (self):
+        """change the rotation of the figure"""
         old_rotation = self.figure.get_rotation()
         self.figure.rotate()
         if self.intersects():
