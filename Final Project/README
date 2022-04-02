@@ -1,7 +1,7 @@
 hello, welcome to our Tetris term project. this is a recreation of Tetris using the Pygame module.
 
 game description: 
-Tetris had simple rules you are given random shapes each sale will appear on the top 
+Tetris had simple rules you are given random shapes each shape will appear on the top 
 of the screen and slowly fall to the bottom of the screen. when a row is full it is removed. 
 if the shapes reach the top the game is over.
 
